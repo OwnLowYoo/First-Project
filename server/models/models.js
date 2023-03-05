@@ -71,7 +71,7 @@ Rating.belongsTo(Tour)
 Tour.hasMany(BasketTour)
 BasketTour.belongsTo(Tour)
 
-Tour.hasMany(TourInfo)
+Tour.hasMany(TourInfo, {as:'info'})
 TourInfo.belongsTo(Tour)
 
 Type.belongsToMany(Country, {through: TypeCountry})
