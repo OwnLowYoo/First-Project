@@ -1,9 +1,10 @@
 const Router = require ('express')
 const router = new Router()
+const tourController = require ('../controllers/tourController')
 
-router.post('/',)
-router.get('/',)
-router.get('/:id',)
+router.post('/', tourController.create)
+router.get('/', tourController.getAll)
+router.get('/:id', tourController.getOne)
 
 
 module.exports = router
