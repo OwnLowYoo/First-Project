@@ -1,7 +1,7 @@
 const ApiError = require ('../error/AppiError');
 const bcrypt = require ('bcrypt')
 const jwt = require ('jsonwebtoken')
-const {User} = require ('../models/models')
+const {User, Basket} = require ('../models/models')
 
 const generateJwt = (id, email, role) =>{
     return jwt.sign(
@@ -28,18 +28,21 @@ class UserController {
     }
 
     async login(req, res, next) {
-        const {email, password} = req.body
-        const user = await User.findOne ({where: {email}})
-        if(!user){
-            return next (ApiError.badRequest('Пользователь не найден'))
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
+        if (!user) {
+            return next(ApiError.badRequest('Пользователь не найден'));
         }
-        let comparePassword = bcrypt.compareSync(password, user.password)
-        if(!comparePassword){
-            return next (ApiError.badRequest('Указан неверный пароль'))
+        let comparePassword = bcrypt.compareSync(password, user.password);
+        if (!comparePassword) {
+            return next(ApiError.badRequest('Указан неверный пароль'));
         }
-        const token = generateJwt (user.id, user.email, user.role)
-        return res.json({token})
-
+        const token = generateJwt(user.id, user.email, user.role);
+        let basket = await Basket.findOne({ where: { userId: user.id } });
+        if (!basket) {
+            await Basket.create({userId: user.id});
+        }
+        return res.json({ token });
     }
     async check(req,res){
         const token = generateJwt(req.user.id, req.user.email, req.user.role)

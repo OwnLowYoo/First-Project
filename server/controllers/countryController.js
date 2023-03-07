@@ -1,5 +1,5 @@
 const {Country} = require ('../models/models')
-//const ApiError = require ('../error/AppiError')
+//const ApiError = require ('../error/ApiError')
 class CountryController {
     async create(req, res) {
         const {name} = req.body
