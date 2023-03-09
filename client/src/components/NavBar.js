@@ -10,7 +10,7 @@ const NavBar = observer(() => {
 
 <Navbar bg="dark" variant="dark">
     <Container>
-        <NavLink style = {{color:'white'}} to = {AGENCY_ROUTE}>Wee</NavLink>
+        <NavLink style = {{color:'white'}} href = {AGENCY_ROUTE}>Wee</NavLink>
         {user.isAuth ?
             <Nav className= "ml-auto" style = {{color: 'white'}}>
                 <Button variant={"outline-light"}>Админ панель</Button>
