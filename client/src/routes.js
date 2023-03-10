@@ -1,9 +1,10 @@
-import Admin from "./pages/Admin";
+import Admin from "./pages/Admin"
 import {ADMIN_ROUTE, AGENCY_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, REGISTRATION_ROUTE, TOUR_ROUTE} from "./utils/consts";
 import Basket from "./pages/Basket";
 import Agency from "./pages/Agency";
 import Auth from "./pages/Auth";
 import TourPage from "./pages/TourPage";
+
 
 export const authRoutes = [
     {
@@ -12,10 +13,11 @@ export const authRoutes = [
     },
 
     {
-        path:  BASKET_ROUTE,
+        path: BASKET_ROUTE,
         Component: Basket
     }
 ]
+
 export const publicRoutes = [
     {
         path: AGENCY_ROUTE,
@@ -23,7 +25,7 @@ export const publicRoutes = [
     },
 
     {
-        path:  LOGIN_ROUTE,
+        path: LOGIN_ROUTE,
         Component: Auth
     },
     {
@@ -32,8 +34,8 @@ export const publicRoutes = [
     },
 
     {
-        path:  TOUR_ROUTE + '/:id',
+        path: TOUR_ROUTE + '/:id',
         Component: TourPage
-    }
+    },
 
 ]
