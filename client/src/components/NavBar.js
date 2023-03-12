@@ -18,12 +18,17 @@ const NavBar = observer(() => {
             <Nav className= "ml-auto" style = {{color: 'white'}}>
                 <Button
                     variant={"outline-light"}
-                    onClick={() => navigate(ADMIN_ROUTE)}>Админ панель
+                    onClick={() => navigate(ADMIN_ROUTE)}
+                    >
+                    Админ панель
                 </Button>
                 <Button
                     variant={"outline-light"}
                     onClick={() => navigate(LOGIN_ROUTE)}
-                    className= "ml-2">Выйти</Button>
+                    className= "ml-2"
+                >
+                    Выйти
+                </Button>
             </Nav>
             :
             <Nav
