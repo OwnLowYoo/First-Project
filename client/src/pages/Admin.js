@@ -32,8 +32,8 @@ const Admin = () => {
             >
                 Добавить тур
             </Button>
-            <CreateCountry show = {countryVisible} onHide={() => setCountryVisible(false)}/>
             <CreateType show = {typeVisible} onHide={() => setTypeVisible(false)}/>
+            <CreateCountry show = {countryVisible} onHide={() => setCountryVisible(false)}/>
             <CreateTour show = {tourVisible} onHide={() => setTourVisible(false)}/>
 
         </Container>
