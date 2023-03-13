@@ -10,7 +10,7 @@ const TourItem = ({tour}) => {
     return (
         <Col md = {3} className={"mt-3"} onClick={() => navigate(TOUR_ROUTE + '/' + tour.id)}>
             <Card style = {{width: 150, cursor: 'pointer'}} border = {"light"}>
-                <Image width={150} height = {150} src = {tour.img}/>
+                <Image width={150} height = {150} src = {process.env.REACT_APP_API_URL + tour.img}/>
                 <div className="text-black-50 d-flex justify-content-between align-items-center">
                     <div> Испания </div>
                     <div className="d-flex align-items-center">

@@ -1,23 +1,21 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {Col, Container, Row, Image, Button, Card} from "react-bootstrap";
 import bigStar from "../assets/bigStar.png"
+import {useParams} from 'react-router-dom'
+import {fetchOneTour} from "../http/tourAPI";
+
 const TourPage = () => {
+    const [tour, setTour] = useState({info: []})
+    const {id} = useParams()
+    useEffect(() =>{
+        fetchOneTour(id).then(data => setTour(data))
+    }, [])
 
-
-
-    const tour = {id: 1, name: 'Таинственная Испания', price: 1200, rating: 0, img: `https://bolerotour.ru/upload/pl_plugin_8/1_5b06645948270.jpg`}
-    const description =
-        [
-            {id:1, title:'Страна', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magnam adipisci doloribus aut! Vitae voluptates harum at nemo eum nostrum minus quidem illum iure. Rerum tempora fugiat dolor praesentium quidem.Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magnam adipisci doloribus aut! Vitae voluptates harum at nemo eum nostrum minus quidem illum iure. Rerum tempora fugiat dolor praesentium quidem'},
-            {id:2, title:'Города', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magnam adipisci doloribus aut! Vitae voluptates harum at nemo eum nostrum minus quidem illum iure.'},
-            {id:3, title:'Программа тура', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magnam adipisci doloribus aut! Vitae voluptates harum at nemo eum nostrum minus quidem illum iure.'},
-            {id:4, title:'Места отьезда', description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis magnam adipisci doloribus aut! Vitae voluptates harum at nemo eum nostrum minus quidem illum iure.'}
-    ]
     return (
         <Container className="mt-3">
             <Row>
                 <Col md = {4}>
-                    <Image width = {300} height = {300} src = {tour.img}/>
+                    <Image width = {300} height = {300} src = {process.env.REACT_APP_API_URL + tour.img}/>
                 </Col>
                 <Col md = {4}>
                     <Row className="d-flex flex-column align-items-center">
@@ -42,7 +40,7 @@ const TourPage = () => {
             </Row>
             <Row className="d-flex flex-column m-3">
                 <h1>Описание тура:</h1>
-                {description.map((info, index) =>
+                {tour.info.map((info, index) =>
                     <Row key = {info.id} style = {{background: index % 2 === 0 ? 'lightgray' : 'transparent', padding: 10}}>
                         {info.title} : {info.description}
                     </Row>
