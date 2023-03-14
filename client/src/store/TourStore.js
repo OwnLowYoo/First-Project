@@ -7,6 +7,9 @@ export default class TourStore {
         this._tours = []
         this._selectedType = {}
         this._selectedCountry = {}
+        this._page = 1
+        this._totalCount = 0
+        this._limit = 3
         makeAutoObservable(this)
     }
     setTypes(types){
@@ -19,10 +22,20 @@ export default class TourStore {
         this._tours = tours
     }
     setSelectedType(type){
-    this._selectedType = type
-    } setSelectedCountry(country){
+        this.setPage(1)
+        this._selectedType = type
+    }
+    setSelectedCountry(country){
+        this.setPage(1)
     this._selectedCountry = country
     }
+    setPage(page){
+        this._page = page
+    }
+    setTotalCount(count){
+        this._totalCount = count
+    }
+
     get types(){
         return this._types
     }
@@ -36,5 +49,14 @@ export default class TourStore {
     }
      get selectedCountry(){
         return this._selectedCountry
+    }
+    get totalCount(){
+        return this._totalCount
+    }
+    get page(){
+        return this._page
+    }
+    get limit(){
+        return this._limit
     }
 }
